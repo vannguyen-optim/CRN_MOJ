@@ -1,0 +1,26 @@
+function cfg=CRN_CONFIG_PUBLICATION()
+% Full manuscript protocol. Edit a copy and use a new output directory.
+root=fileparts(mfilename('fullpath'));cfg.version='COAP_MATLAB_20261010_v3_affine_fastqp_v1';
+cfg.seed=20271005;cfg.scopes={'lowdim','regression','svm','wdbc'};
+cfg.output=fullfile(root,'results_publication');cfg.parallel=false;cfg.workers=12;
+cfg.fixed_convex_comparisons=true;cfg.export_tables=true;cfg.export_figures=true;
+cfg.repetitions=30;cfg.low_grid=20;cfg.low_starts=[1.5 -1.5 0;-1.5 1.5 0];
+cfg.reg_dimensions=[100 200 500];cfg.reg_overlap=[0 .5 1];
+cfg.reg_n=[200 100];cfg.reg_ntest=2000;cfg.reg_gamma=[.001 .01 .05];
+cfg.reg_geometries={'free','box','affine'};
+cfg.svm_dimensions=[100 200];cfg.svm_prevalence=[.3 .5];
+cfg.svm_n=[400 200 2000];cfg.svm_geometries={'free','affine'};
+cfg.zeta=[.002 .01 .05];cfg.q=[.5 .8];cfg.c=10.^((-8:8)/2);
+cfg.wdbc_train=[127 214];cfg.wdbc_val=[42 72];cfg.wdbc_test=[43 71];
+cfg.sparsity=10;cfg.noise=.1;cfg.flips=.05;
+o=struct('tol',1e-5,'feas_tol',1e-9,'qp_tol',1e-11,'zero_snap',1e-10, ...
+ 'max_outer',1000,'max_inner',5000,'max_qp',2000,'qp_max_iter',2000, ...
+ 'eta',1,'rho',.1,'chi',.1,'aN',1e-5,'BN',10,'mN',1e-6, ...
+ 'curvature_modification','absolute_eigenvalues','beta',.5,'newton_trials',12,'explore_steps',8,'explore',true, ...
+ 'rw_eps',1e-6,'explore_policy','stable_irl1','initial_explore_stationary',false, ...
+ 'face_newton',true,'proximal_refine',true,'save_iterates',true,'inner_trace',true, ...
+ 'ssqp_sigma',.5,'ssqp_epsilon',1e-5,'external_backtracks',60, ...
+ 'irena_eta',1,'irena_xi',1e-8,'irena_nu',1,'hpg_alpha',1e-8, ...
+ 'hpg_delta',.5,'hpg_b1',1+1e-8,'hpg_b2',1e-3,'hpg_sigma',.5);
+cfg.options=o;cfg.local_diagnostics=true;
+end

@@ -1,0 +1,4 @@
+Active project: /Users/ChanhLe/Documents/MATLAB/CRN_MOJ
+Release: COAP_MATLAB_20261010_v3_affine_fastqp_v1
+Command: CRN_RUN_PUBLICATION;
+Preserved previous release: /Users/ChanhLe/Documents/MATLAB/CRN_MOJ/archive/main_fastqp_upgrade_v1
